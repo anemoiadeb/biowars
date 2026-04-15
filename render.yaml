@@ -1,0 +1,22 @@
+# render.yaml — Render.com deployment config for Bio-Wars Bot
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: bio-wars-bot
+    env: python
+    region: frankfurt        # closest to RU users; change to oregon / singapore if needed
+    plan: free               # free tier is enough for a Telegram bot
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bio_wars_bot.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false           # set this manually in Render dashboard — keep it secret!
+      - key: WEBHOOK_URL
+        sync: false           # set to your Render URL, e.g. https://bio-wars-bot.onrender.com
+      - key: PORT
+        value: "8080"         # Render injects PORT automatically, but explicit is fine too
+    disk:
+      name: bio-wars-data
+      mountPath: /opt/render/project/src   # where bio_wars.json will be written
+      sizeGB: 1
