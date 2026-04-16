@@ -1,8 +1,0 @@
-# Bio-Wars Bot — dependencies
-# Install: pip install -r requirements.txt
-# Pydroid 3: pip install aiogram aiohttp  (no --break-system-packages needed)
-
-aiogram==3.13.0
-pydantic==2.8.2
-pydantic-core==2.20.1
-aiohttp==3.10.10
